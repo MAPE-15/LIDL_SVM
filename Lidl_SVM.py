@@ -86,7 +86,9 @@ class Lidl_SVM:
                     for feature in self.data[classification]:
 
                         # move line closer to the point if it's bad classified, optimization for plane
+                        # -1 --> left of the line, 1 --> right of the line
 
+                        # --------------------------- PERCEPTRON ALGORITHM !!! ------------------------------
                         if (classification == -1) and (np.sign(a * feature[0] + b * feature[1] + c) == 1):
                             a -= learning_rate * feature[0]
                             b -= learning_rate * feature[1]
@@ -97,6 +99,7 @@ class Lidl_SVM:
                             a += learning_rate * feature[0]
                             b += learning_rate * feature[1]
                             c += learning_rate
+                        # --------------------------- PERCEPTRON ALGORITHM !!! ------------------------------
 
             # margin width of optimized line
             margin_width = 0
